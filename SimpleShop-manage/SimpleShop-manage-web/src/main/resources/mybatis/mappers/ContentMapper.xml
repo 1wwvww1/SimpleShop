@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.SimpleShop.manage.mapper.ContentCategoryMapper">
+
+    <!--private Long id;
+
+    @Column(name = "category_id")
+    private Long categoryId;
+
+    private String title;
+
+    @Column(name = "sub_title")
+    private String subTitle;
+
+    @Column(name = "title_desc")
+    private String titleDesc;
+
+    private String url;
+
+    private String pic;
+
+    private String pic2;
+
+    private String content;-->
+    <resultMap id="content" type="com.SimpleShop.manage.entiy.ContentCategory" >
+        <id property="id" column="id"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="title" column="title"/>
+        <result property="subTitle" column="sub_title"/>
+        <result property="titleDesc" column="title_desc"/>
+        <result property="url" column="url"/>
+        <result property="pic" column="pic"/>
+        <result property="pic2" column="pic2"/>
+        <result property="content" column="content"/>
+    </resultMap>
+
+
+
+    <select id="queryContentByWhere" resultMap="content" parameterType="Content">
+        SELECT * FROM tb_content where category_id = ${categoryId};
+    </select>
+
+    <insert id="saveContent" parameterType="Content">
+        INSERT INTO tb_content (category_id,title,sub_title,title_desc,url,pic,pic2,content,created,updated)  VALUES(${categoryId},${title},${subTitle},${titleDesc},${url},${pic},${pic2},${content},${created},${updated});
+    </insert>
+
+</mapper>
